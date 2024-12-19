@@ -157,7 +157,6 @@ def main():
     uploaded_file = st.file_uploader("Unggah File Excel S-box", type=["xlsx"])
 
     if uploaded_file is not None:
-        # Load S-box from the uploaded file
         sbox = load_sbox_from_excel(uploaded_file)
 
         if sbox:
@@ -167,24 +166,46 @@ def main():
             )
 
             if st.button("Hitung"):
+                result = None
+                result_text = ""
+
                 if operation == "Nonlinearity (NL)":
                     result = calculate_nonlinearity(sbox)
-                    st.write(f"Hasil Nonlinearity: {result}")
+                    result_text = f"Hasil Nonlinearity: {result}"
                 elif operation == "SAC":
                     result = calculate_sac(sbox, 8)
-                    st.write(f"Hasil SAC: {result:.5f}")
+                    result_text = f"Hasil SAC: {result:.5f}"
                 elif operation == "BIC-NL":
                     result = calculate_bic_nl(sbox)
-                    st.write(f"Hasil BIC-NL: {result}")
+                    result_text = f"Hasil BIC-NL: {result}"
                 elif operation == "BIC-SAC":
                     result = calculate_bic_sac(sbox)
-                    st.write(f"Hasil BIC-SAC: {result}")
+                    result_text = f"Hasil BIC-SAC: {result}"
                 elif operation == "LAP":
                     result = calculate_lap(sbox)
-                    st.write(f"Hasil LAP: {result}")
+                    result_text = f"Hasil LAP: {result}"
                 elif operation == "DAP":
                     result = calculate_dap(sbox)
-                    st.write(f"Hasil DAP: {result}")
+                    result_text = f"Hasil DAP: {result}"
+
+                # Tampilkan hasil
+                st.write(result_text)
+
+                # Menyimpan hasil ke file dan menyediakan tombol download
+                if result is not None:
+                    result_filename = "result.txt"
+                    with open(result_filename, "w") as f:
+                        f.write(result_text)
+
+                    # Tombol untuk download hasil
+                    with open(result_filename, "r") as f:
+                        st.download_button(
+                            label="Unduh Hasil",
+                            data=f,
+                            file_name=result_filename,
+                            mime="text/plain"
+                        )
+
         else:
             st.error("File tidak valid, pastikan file Excel mengandung 256 nilai.")
 
