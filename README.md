@@ -15,6 +15,7 @@ Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung n
 3. **Memilih parameter**: User dapat memilih satu parameter untuk dihitung.
 4. **Menghitung nilai parameter**: Hasil perhitungan akan ditampilkan setelah User menekan tombol 'Hitung'.
 
+Untuk mengakses aplikasi, Anda bisa klik [di sini](https://kelompok7-kriptografi.streamlit.app/) atau buka file [url.txt](url.txt) untuk melihat URL aplikasi.
 ## Setup Environment: Shell/Terminal
 ```
 cd sbox44-matrics
