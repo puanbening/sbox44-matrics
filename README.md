@@ -13,7 +13,7 @@ Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung n
 1. **Mengunggah file excel**: User dapat melakukan input file excel berisi S-box.
 2. **Menampilkan hasil import S-box**: Hasil import S-box akan muncul dalam bentuk dataframe.
 3. **Memilih parameter**: User dapat memilih satu parameter untuk dihitung.
-4. **Menghitung nilai parameter**: Hasil perhitungan akan ditampilkan setelah User memilih tombol Hitung.
+4. **Menghitung nilai parameter**: Hasil perhitungan akan ditampilkan setelah User menekan tombol 'Hitung'.
 
 ## Setup Environment: Shell/Terminal
 ```
