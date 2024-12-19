@@ -17,8 +17,7 @@ Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung n
 
 ## Setup Environment: Shell/Terminal
 ```
-mkdir dashboard
-cd dashboard
+cd sbox44-matrics
 pipenv install
 pipenv shell
 pip install -r requirements.txt
