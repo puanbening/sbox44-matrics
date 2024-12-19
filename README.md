@@ -1,7 +1,7 @@
 # Kriptografi S-box<sub>44</sub>
 
 ## Deskripsi
-Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung nilai dari berbagai parameter (matrics) kriptografi pada S-box, seperti:
+Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung nilai dari berbagai parameter (matrics) kriptografi pada S-box, antara lain:
 - **Nonlinearity (NL)**
 - **Strict Avalanche Criterion (SAC)**
 - **Bit Independence Criterion - Nonlinearity (BIC-NL)**
