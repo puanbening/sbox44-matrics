@@ -7,6 +7,7 @@ import os
 def load_sbox_from_excel(file_path):
     try:
         df = pd.read_excel(file_path, header=None)
+        st.dataframe(df)
         sbox = df.values.flatten().tolist()
 
         if len(sbox) == 256:
@@ -151,7 +152,7 @@ def calculate_lap(sbox):
 
 # Streamlit App
 def main():
-    st.title("Aplikasi Kriptografi S-box")
+    st.markdown("# Kriptografi S-box<sub>44</sub>", unsafe_allow_html=True)
 
     uploaded_file = st.file_uploader("Unggah File Excel S-box", type=["xlsx"])
 
