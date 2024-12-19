@@ -150,7 +150,8 @@ def calculate_lap(sbox):
     max_lap = np.max(correlation_table[1:, 1:]) / box_size
     return round(max_lap, 6)
 
-# Streamlit App
+import pandas as pd
+
 def main():
     st.markdown("# Kriptografi S-box<sub>44</sub>", unsafe_allow_html=True)
 
@@ -166,44 +167,46 @@ def main():
             )
 
             if st.button("Hitung"):
-                result = None
-                result_text = ""
+                results = []  # Create a list to accumulate results
 
                 if operation == "Nonlinearity (NL)":
                     result = calculate_nonlinearity(sbox)
-                    result_text = f"Hasil Nonlinearity: {result}"
+                    results.append({"Operation": "Nonlinearity", "Result": result})
                 elif operation == "SAC":
                     result = calculate_sac(sbox, 8)
-                    result_text = f"Hasil SAC: {result:.5f}"
+                    results.append({"Operation": "SAC", "Result": f"{result:.5f}"})
                 elif operation == "BIC-NL":
                     result = calculate_bic_nl(sbox)
-                    result_text = f"Hasil BIC-NL: {result}"
+                    results.append({"Operation": "BIC-NL", "Result": result})
                 elif operation == "BIC-SAC":
                     result = calculate_bic_sac(sbox)
-                    result_text = f"Hasil BIC-SAC: {result}"
+                    results.append({"Operation": "BIC-SAC", "Result": result})
                 elif operation == "LAP":
                     result = calculate_lap(sbox)
-                    result_text = f"Hasil LAP: {result}"
+                    results.append({"Operation": "LAP", "Result": result})
                 elif operation == "DAP":
                     result = calculate_dap(sbox)
-                    result_text = f"Hasil DAP: {result}"
+                    results.append({"Operation": "DAP", "Result": result})
 
                 # Tampilkan hasil
-                st.write(result_text)
+                for result_data in results:
+                    st.write(f"{result_data['Operation']}: {result_data['Result']}")
 
-                # Menyimpan hasil ke file dan menyediakan tombol download
-                if result is not None:
-                    result_filename = "result.txt"
-                    with open(result_filename, "w") as f:
-                        f.write(result_text)
+                # Convert results to a DataFrame
+                results_df = pd.DataFrame(results)
+
+                # Menyimpan hasil ke file Excel dan menyediakan tombol download
+                if results:
+                    result_filename = "results.xlsx"
+                    results_df.to_excel(result_filename, index=False)
 
                     # Tombol untuk download hasil
-                    with open(result_filename, "r") as f:
+                    with open(result_filename, "rb") as f:
                         st.download_button(
                             label="Unduh Hasil",
                             data=f,
                             file_name=result_filename,
-                            mime="text/plain"
+                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                         )
 
         else:
