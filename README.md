@@ -9,10 +9,11 @@ Aplikasi ini merupakan tool berbasis Streamlit yang digunakan untuk menghitung b
 - **Linear Approximation Probability (LAP)**
 - **Differential Approximation Probability (DAP)**
 
-## Fitur Utama
-1. **Unggah File Excel**: Unggah file excel berisi S-box.
-2. **Pilih Parameter**: User dapat memilih satu parameter untuk dihitung.
-3. **Hitung Nilai**: Hasil perhitungan akan ditampilkan.
+## Fitur 
+1. **Mengunggah File Excel**: User dapat melakukan input file excel berisi S-box.
+2. **Menampilkan hasil import S-box**: Hasil import S-box akan muncul dalam bentuk dataframe.
+3. **Memilih Parameter**: User dapat memilih satu parameter untuk dihitung.
+4. **Hitung Nilai**: Hasil perhitungan akan ditampilkan setelah User memilih tombol Hitung.
 
 ## Setup Environment: Shell/Terminal
 ```
